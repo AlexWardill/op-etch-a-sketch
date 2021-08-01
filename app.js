@@ -1,9 +1,9 @@
-const body = document.getElementsByTagName('body');
-const h1 = document.getElementsByTagName('h1');
-const button = document.getElementsByTagName('button');
+const body = document.getElementById('body');
+const h1 = document.getElementById('h1');
+const button = document.getElementById('button');
 const container = document.getElementById('container');
 
-// Method of creating grid size
+
 function createGrid(gridSize) {
     container.style.gridTemplateColumns = `repeat(${gridSize}, 1fr)`;
     container.style.gridTemplateRows = `repeat(${gridSize}, 1fr)`;
@@ -15,9 +15,15 @@ function createGrid(gridSize) {
     
         container.appendChild(div);
     }
-
 }
 
+
+function resetGrid() {
+    let newSize = prompt("Enter new grid size: ");
+    return createGrid(newSize);
+}
+
+button.addEventListener('click', resetGrid);
+
+
 createGrid(10); // default grid size
-
-
