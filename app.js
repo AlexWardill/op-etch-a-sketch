@@ -1,12 +1,14 @@
 const DEFAULT_BOX_COLOR = '#fefefe';
+let currentMode = 'DEFAULT';
 
 const body = document.getElementById('body');
 const h1 = document.getElementById('h1');
+const container = document.getElementById('container');
+
 const resetButton = document.getElementById('reset-btn');
 const blackButton = document.getElementById('black-btn');
 const randomButton = document.getElementById('random-btn');
-const container = document.getElementById('container');
-
+const eraserButton = document.getElementById('eraser-btn');
 
 // random color
 function randomColor() {
@@ -16,6 +18,18 @@ function randomColor() {
     
     return `rgb(${randomR}, ${randomG}, ${randomB})`;
 }
+
+blackButton.addEventListener('click', () => {
+    currentMode = 'BLACK';
+});
+
+randomButton.addEventListener('click', () => {
+    currentMode = 'RANDOM';
+});
+
+eraserButton.addEventListener('click', () => {
+    currentMode = 'ERASER';
+});
 
 // create grid
 function createGrid(gridSize) {
@@ -33,7 +47,14 @@ function createGrid(gridSize) {
         let boxes = document.querySelectorAll('.box');
         boxes.forEach(box => {
         box.addEventListener('mouseover', function changeColor() {
-            this.style.background = randomColor();
+            
+            if (currentMode == 'DEFAULT' || currentMode == 'BLACK') {
+                this.style.background = 'black';
+            } else if (currentMode == 'RANDOM') {
+                this.style.background = randomColor();
+            } else if (currentMode == 'ERASER') {
+                this.style.background = DEFAULT_BOX_COLOR;
+            } 
         });
     });
 }
