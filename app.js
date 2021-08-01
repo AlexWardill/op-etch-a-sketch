@@ -1,7 +1,10 @@
+const DEFAULT_BOX_COLOR = '#fefefe';
+
 const body = document.getElementById('body');
 const h1 = document.getElementById('h1');
 const button = document.getElementById('button');
 const container = document.getElementById('container');
+
 
 // random color
 function randomColor() {
@@ -25,8 +28,8 @@ function createGrid(gridSize) {
         container.appendChild(div);
     }
     // add event listener for mouseover, change background colour to random colour
-    let boxes = document.querySelectorAll('.box');
-    boxes.forEach(box => {
+        let boxes = document.querySelectorAll('.box');
+        boxes.forEach(box => {
         box.addEventListener('mouseover', function changeColor() {
             this.style.background = randomColor();
         });
@@ -36,6 +39,10 @@ function createGrid(gridSize) {
 // reset grid
 function resetGrid() {
     let newSize = prompt("Enter new grid size: ");
+    let boxes = document.querySelectorAll('.box');
+    boxes.forEach(box => {
+        box.style.background = DEFAULT_BOX_COLOR;
+    });
     return createGrid(newSize);
 }
 
