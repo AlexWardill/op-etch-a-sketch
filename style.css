@@ -33,7 +33,7 @@ button {
     display: grid;
 }
 
-.random-hover:hover {
+.random-hover {
     background-color: blue;
 }
 
