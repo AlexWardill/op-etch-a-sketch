@@ -2,7 +2,9 @@ const DEFAULT_BOX_COLOR = '#fefefe';
 
 const body = document.getElementById('body');
 const h1 = document.getElementById('h1');
-const button = document.getElementById('button');
+const resetButton = document.getElementById('reset-btn');
+const blackButton = document.getElementById('black-btn');
+const randomButton = document.getElementById('random-btn');
 const container = document.getElementById('container');
 
 
@@ -46,7 +48,7 @@ function resetGrid() {
     return createGrid(newSize);
 }
 
-button.addEventListener('click', resetGrid);
+resetButton.addEventListener('click', resetGrid);
 
 //
 
