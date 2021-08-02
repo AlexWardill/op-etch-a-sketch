@@ -23,6 +23,11 @@ slider.addEventListener('mousemove', (e) => {
     updateSizeLabel(e.target.value);
 });
 
+slider.addEventListener('change', (e) => {
+    clearGrid();
+    createGrid(e.target.value);
+})
+
 function updateSizeLabel(size) {
     sliderLabel.innerHTML = size
 }
@@ -84,15 +89,17 @@ function createGrid(gridSize) {
     });
 }
 
-
-
-// reset grid
-function resetGrid() {
-    let newSize = prompt("Enter new grid size: ");
+function clearGrid() {
     let boxes = document.querySelectorAll('.box');
     boxes.forEach(box => {
         box.style.background = DEFAULT_BOX_COLOR;
     });
+}
+
+// reset grid
+function resetGrid() {
+    let newSize = prompt("Enter new grid size: ");
+    clearGrid();
     updateSizeLabel(DEFAULT_SIZE);
     slider.value = DEFAULT_SIZE;
     return createGrid(newSize);
