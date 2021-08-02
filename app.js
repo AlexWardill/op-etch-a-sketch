@@ -13,6 +13,7 @@ const randomButton = document.getElementById('random-btn');
 const eraserButton = document.getElementById('eraser-btn');
 const colorPicker = document.getElementById('color-picker');
 
+colorPicker.value = custom_color;
 // random color
 function randomColor() {
     let randomR = Math.floor(Math.random()*255);
@@ -34,11 +35,10 @@ eraserButton.addEventListener('click', () => {
     currentMode = 'ERASER';
 });
 
-colorPicker.addEventListener('change', () => {
+colorPicker.addEventListener('change', (e) => {
     currentMode = 'COLOR';
-    custom_color = this.target.value;
+    custom_color = e.target.value;
 });
-
 
 // create grid
 function createGrid(gridSize) {
