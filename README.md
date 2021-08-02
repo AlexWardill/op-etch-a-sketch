@@ -7,7 +7,6 @@ Cap grid size at 100
 
 TO-DO:
 
-* Add color selector
 * Add slider instead of prompt
 
 - Style the button spacing

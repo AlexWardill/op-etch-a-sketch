@@ -1,4 +1,5 @@
 const DEFAULT_BOX_COLOR = '#fefefe';
+const DEFAULT_SIZE = 16;
 let currentMode = 'DEFAULT';
 
 let custom_color = 'black';
@@ -12,6 +13,19 @@ const blackButton = document.getElementById('black-btn');
 const randomButton = document.getElementById('random-btn');
 const eraserButton = document.getElementById('eraser-btn');
 const colorPicker = document.getElementById('color-picker');
+const slider = document.getElementById('slider');
+let sliderLabel = document.getElementById('slider-label');
+
+slider.value = 16;
+sliderLabel.innerHTML = slider.value
+
+slider.addEventListener('mousemove', (e) => {
+    updateSizeLabel(e.target.value);
+});
+
+function updateSizeLabel(size) {
+    sliderLabel.innerHTML = size
+}
 
 colorPicker.value = custom_color;
 // random color
@@ -79,6 +93,8 @@ function resetGrid() {
     boxes.forEach(box => {
         box.style.background = DEFAULT_BOX_COLOR;
     });
+    updateSizeLabel(DEFAULT_SIZE);
+    slider.value = DEFAULT_SIZE;
     return createGrid(newSize);
 }
 
