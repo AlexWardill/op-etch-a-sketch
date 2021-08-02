@@ -56,8 +56,13 @@ eraserButton.addEventListener('click', () => {
 
 colorPicker.addEventListener('change', (e) => {
     currentMode = 'COLOR';
-    custom_color = e.target.value;
+    changeColor(e.target.value);
 });
+
+function changeColor(new_color) {
+    custom_color = new_color;
+    colorPicker.value = new_color;
+}
 
 // create grid
 function createGrid(gridSize) {
@@ -101,6 +106,7 @@ function resetGrid() {
     clearGrid();
     updateSizeLabel(DEFAULT_SIZE);
     slider.value = DEFAULT_SIZE;
+    changeColor('black');
     return createGrid(DEFAULT_SIZE);
 }
 
