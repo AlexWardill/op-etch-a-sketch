@@ -1,6 +1,8 @@
 const DEFAULT_BOX_COLOR = '#fefefe';
 let currentMode = 'DEFAULT';
 
+let custom_color = 'black';
+
 const body = document.getElementById('body');
 const h1 = document.getElementById('h1');
 const container = document.getElementById('container');
@@ -9,6 +11,7 @@ const resetButton = document.getElementById('reset-btn');
 const blackButton = document.getElementById('black-btn');
 const randomButton = document.getElementById('random-btn');
 const eraserButton = document.getElementById('eraser-btn');
+const colorPicker = document.getElementById('color-picker');
 
 // random color
 function randomColor() {
@@ -30,6 +33,12 @@ randomButton.addEventListener('click', () => {
 eraserButton.addEventListener('click', () => {
     currentMode = 'ERASER';
 });
+
+colorPicker.addEventListener('change', () => {
+    currentMode = 'COLOR';
+    custom_color = this.target.value;
+});
+
 
 // create grid
 function createGrid(gridSize) {
@@ -54,10 +63,14 @@ function createGrid(gridSize) {
                 this.style.background = randomColor();
             } else if (currentMode == 'ERASER') {
                 this.style.background = DEFAULT_BOX_COLOR;
-            } 
+            } else if (currentMode == 'COLOR') {
+                this.style.background = custom_color;
+            }
         });
     });
 }
+
+
 
 // reset grid
 function resetGrid() {
