@@ -98,11 +98,10 @@ function clearGrid() {
 
 // reset grid
 function resetGrid() {
-    let newSize = prompt("Enter new grid size: ");
     clearGrid();
     updateSizeLabel(DEFAULT_SIZE);
     slider.value = DEFAULT_SIZE;
-    return createGrid(newSize);
+    return createGrid(DEFAULT_SIZE);
 }
 
 resetButton.addEventListener('click', resetGrid);
